@@ -1,0 +1,44 @@
+{% extends 'dashboard_base.html' %}
+
+{% block page_title %}Create Workouts{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Create Custom Workout</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Workout Name:</label>
+            {{ form.name }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description:</label>
+            {{ form.description }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.duration.id_for_label }}">Duration (in minutes):</label>
+            {{ form.duration }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.duration_unit.id_for_label }}">Duration Unit:</label>
+            {{ form.duration_unit }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.exercises.id_for_label }}">Exercises:</label>
+            {{ form.exercises }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.intensity.id_for_label }}">Intensity:</label>
+            {{ form.intensity }}
+        </div>
+        
+        <button type="submit" class="btn btn-dark btn-lg">Save Workout</button>
+    </form>
+</div>
+{% endblock %}

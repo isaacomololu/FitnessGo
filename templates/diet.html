@@ -1,0 +1,25 @@
+{% extends 'dashboard_base.html' %}
+
+{% block page_title %}Your Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Your Diet Plans</h2>
+  <div class="row">
+    {% for diet_plan in diet_plans %}
+      {% if diet_plan.fitness_goal == request.user.profile.fitness_goal %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text"><strong>Breakfast:</strong> {{ diet_plan.breakfast }}</p>
+              <p class="card-text"><strong>Lunch:</strong> {{ diet_plan.lunch }}</p>
+              <p class="card-text"><strong>Dinner:</strong> {{ diet_plan.dinner }}</p>
+              <p class="card-text"><strong>Snacks:</strong> {{ diet_plan.snacks }}</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

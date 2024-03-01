@@ -1,0 +1,26 @@
+{% extends 'dashboard_base.html' %}
+
+{% block page_title %}Your Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    {% for workout in all_workouts %}
+      {% if workout.fitness_goal == request.user.profile.fitness_goal %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'workout' workout.id %}">{{ workout.name }}</a></h5>
+              <p class="card-text">{{ workout.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<button class="mt-4">
+  <a href="{% url 'create_workout' %}">Create Your Own Workout</a>
+</button>
+{% endblock %}

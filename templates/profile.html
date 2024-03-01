@@ -1,0 +1,50 @@
+{% extends 'dashboard_base.html' %}
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    
+        <!-- User has already filled out the form, display profile information -->
+        <h2>Your Profile</h2>
+        <p>Username: {{ user_form.instance.username }}</p>
+        <p>Email: {{ user_form.instance.email }}</p>
+        <p>Age: {{ profile_form.instance.age }}</p>
+        <p>Height: {{ profile_form.instance.height }}</p>
+        <p>Weight: {{ profile_form.instance.weight }}</p>
+        <p>Fitness Goal: {{ profile_form.instance.fitness_goal }}</p>
+   
+        <h2>Update Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <label for="{{ user_form.username.id_for_label }}">Username:</label>
+                    {{ user_form.username }}
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="{{ user_form.email.id_for_label }}">Email:</label>
+                    {{ user_form.email }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="{{ profile_form.age.id_for_label }}">Age:</label>
+                {{ profile_form.age }}
+            </div>
+            <div class="form-group">
+                <label for="{{ profile_form.height.id_for_label }}">Height:</label>
+                {{ profile_form.height }}
+            </div>
+            <div class="form-group">
+                <label for="{{ profile_form.weight.id_for_label }}">Weight:</label>
+                {{ profile_form.weight }}
+            </div>
+            <div class="form-group">
+                <label for="{{ profile_form.fitness_goal.id_for_label }}">Fitness Goal:</label>
+                {{ profile_form.fitness_goal }}
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+        </form>
+    
+</div>
+{% endblock %}
